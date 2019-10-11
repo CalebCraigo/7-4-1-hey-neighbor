@@ -1,0 +1,14 @@
+{% load static %}
+
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Hey Neighbor</title>
+  </head>
+  <body>
+    <h1>Welcome to Hey Neighbor</h1>
+      <a href="{% url 'hey_neighbor:index' %}"><span>Home</span></a>
+    {% block content %}
+    {% endblock %}
+  </body>
+</html>

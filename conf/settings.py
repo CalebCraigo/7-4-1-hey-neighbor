@@ -25,7 +25,7 @@ SECRET_KEY = 'grp=rtda7g($a*qhdt0#@=u4fp#bg$qxzmj32nd_-$077a3(h*'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition

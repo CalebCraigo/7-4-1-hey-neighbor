@@ -1,0 +1,15 @@
+{% extends 'hey_neighbor/base.html' %}
+
+{% block nav %}
+{% endblock nav %}
+
+{% block content %}
+  {% for option in types %}
+    <a href="{% url 'hey_neighbor:selection' option %}"><span>{{option.capitalize}}</span></a>
+  {% endfor %}
+
+{% if error_message %}<p><strong>{{ error_message }}</strong></p>{% endif %}
+
+    <p>{{hey_neighbor.tool}}<span>: {{hey_neighbor.owner}}</span><p>
+
+{% endblock %}

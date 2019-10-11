@@ -1,7 +1,7 @@
 from django.contrib import admin
 
-from .models import Tools
+from .models import Tool
 
-admin.site.register(Tools)
+admin.site.register(Tool)
 
 # Register your models here.

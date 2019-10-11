@@ -1,8 +1,11 @@
 from django.db import models
 from django.utils import timezone
 from django.urls import reverse
+from django.contrib.auth import get_user_model
 
-class Tools(models.Model):
+User = get_user_model()
+
+class Tool(models.Model):
 
     AVAILABLE_TYPES = [
     ('YARD', 'Yard'),
@@ -11,9 +14,11 @@ class Tools(models.Model):
     ('AUTO', 'Auto')
     ]
 
+    # owner = models.ForeignKey(User, on_delete=models.CASCADE)
     tool = models.CharField(max_length=255, default='')
     types = models.CharField(max_length=255, choices=AVAILABLE_TYPES, default='YARD')
     date_posted = models.DateTimeField('Date Posted', default=timezone.now)
+    boolean = models.BooleanField(default=False)
 
     def __str__(self):
         return self.tool
