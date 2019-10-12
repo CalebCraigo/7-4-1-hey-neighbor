@@ -14,14 +14,17 @@ class Tool(models.Model):
     ('AUTO', 'Auto')
     ]
 
-    # owner = models.ForeignKey(User, on_delete=models.CASCADE)
+    owner = models.ForeignKey(User, on_delete=models.CASCADE)
     tool = models.CharField(max_length=255, default='')
     types = models.CharField(max_length=255, choices=AVAILABLE_TYPES, default='YARD')
     date_posted = models.DateTimeField('Date Posted', default=timezone.now)
-    boolean = models.BooleanField(default=False)
+    availability = models.BooleanField(default=False)
 
     def __str__(self):
         return self.tool
+
+    def get_absolute_url(self):
+        return reverse('hey_neighbor:index')
 
 
 # Create your models here.

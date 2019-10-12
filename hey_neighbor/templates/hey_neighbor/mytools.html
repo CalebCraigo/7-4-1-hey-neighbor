@@ -1,0 +1,22 @@
+{% extends 'hey_neighbor/base.html' %}
+
+
+{% block content %}
+
+{% if object_list %}
+{% for object in object_list %}
+  <ul>
+  <li><a>{{object.tool}}</a></li>
+  <li><a>{{object.availability}}</a></li>
+    {% if request.user.is_authenticated %}
+    <a href="{% url 'hey_neighbor:delete' object.pk %}">Delete Posting</a>
+    {% endif %}
+  </ul>
+{% endfor %}
+{% else %}
+
+<p>There was an issue</p>
+
+{% endif %}
+
+{% endblock %}

@@ -1,0 +1,15 @@
+{% extends 'hey_neighbor/base.html' %}
+
+{% block content %}
+<ul>
+<li>{{tool.tool}}</li>
+<p>Owner: {{tool.owner}}</p>
+{% if object.availability == True%}
+<button>Borrow Now</button>
+{% else %}
+<p>Unavailable</p>
+{% endif %}
+</ul>
+
+
+{% endblock %}

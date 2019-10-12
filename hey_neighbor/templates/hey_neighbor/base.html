@@ -7,8 +7,9 @@
   </head>
   <body>
     <h1>Welcome to Hey Neighbor</h1>
-      <a href="{% url 'hey_neighbor:index' %}"><span>Home</span></a>
+    {% include 'hey_neighbor/nav.html' %}
     {% block content %}
     {% endblock %}
+
   </body>
 </html>

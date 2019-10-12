@@ -129,4 +129,4 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 STATICEFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
 LOGIN_REDIRECT_URL = '/hey_neighbor/'
-LOGOUT_REDIRECT_URL = '/accounts/login/'
+LOGOUT_REDIRECT_URL = 'hey_neighbor:index'

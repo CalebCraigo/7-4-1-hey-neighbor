@@ -1,8 +1,15 @@
+{% extends '../hey_neighbor/base.html' %}
+{% block content %}
 <h2>Log In</h2>
 
+<p>Login neigbor!!</p>
 <form method = 'post'>
   {% csrf_token %}
   {{form.as_p}}
   <button>Log In</button>
 
 </form>
+
+<p>Don't have account yet? Sign up here to share your tools!</p>
+<a href="{% url 'accounts:signup' %}">Sign Up!</a>
+{% endblock %}

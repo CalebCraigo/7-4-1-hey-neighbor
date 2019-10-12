@@ -1,15 +1,27 @@
 {% extends 'hey_neighbor/base.html' %}
 
-{% block nav %}
-{% endblock nav %}
 
 {% block content %}
-  {% for option in types %}
-    <a href="{% url 'hey_neighbor:selection' option %}"><span>{{option.capitalize}}</span></a>
+  {% for heading in object_list.headings %}
+    <a href="{% url 'hey_neighbor:selection' heading %}"><span>{{heading.capitalize}}</span></a>
   {% endfor %}
 
-{% if error_message %}<p><strong>{{ error_message }}</strong></p>{% endif %}
+<!-- {% if error_message %}<p><strong>{{ error_message }}</strong></p>{% endif %} -->
+{% if object_list %}
+{% for object in object_list.tools %}
+  <ul>
+  <li><a href="{% url 'hey_neighbor:detail' object.pk %}" for='choice{{forloop.counter}}'>{{object.tool}}</a></li>
+  {% if object.availability == True %}
+  <p> Is Available: Yes</p>
+  {% else %}
+  <p> Is Available: No</p>
+  {% endif %}
+  </ul>
+{% endfor %}
+{% else %}
 
-    <p>{{hey_neighbor.tool}}<span>: {{hey_neighbor.owner}}</span><p>
+<p>There was an issue</p>
+
+{% endif %}
 
 {% endblock %}

@@ -1,0 +1,15 @@
+{% extends 'hey_neighbor/base.html' %}
+
+{% if request.user.is_authenticated %}
+{% block content %}
+
+<h2>Create New Posting</h2>
+<form method='post'>
+  {% csrf_token %}
+  <p>Are you sure you want to delete this post?</p>
+  <input type='submit' value='Confirm'>
+
+</form>
+
+{% endblock %}
+{% endif %}
