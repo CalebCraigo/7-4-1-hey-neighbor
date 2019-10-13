@@ -2,24 +2,28 @@
 
 
 {% block content %}
-    <a href="{% url 'hey_neighbor:index' %}"><span>All Tools</span></a>
-  {% for heading in object_list.headings %}
-    <a href="{% url 'hey_neighbor:selection' heading %}"><span>{{heading.capitalize}}</span></a>
-  {% endfor %}
+<div class='row justify-content-center'>
+  <a href="{% url 'hey_neighbor:index' %}"><span class='col-sm-2'>All Tools </span></a>
+{% for heading in object_list.headings %}
+  <a href="{% url 'hey_neighbor:selection' heading %}"><span class='col-sm-2'>{{heading.capitalize}} </span></a>
+{% endfor %}
+</div>
 
-<!-- {% if error_message %}<p><strong>{{ error_message }}</strong></p>{% endif %} -->
+<div class='row'>
 {% if object_list %}
 {% for object in object_list.tools %}
-  <ul>
-  <li><a href="{% url 'hey_neighbor:detail' object.pk %}" for='choice{{forloop.counter}}'>{{object.tool}}</a></li>
-  {% if object.availability == True %}
-  <p> Is Available: Yes</p>
-  {% else %}
-  <p> Is Available: No</p>
-  {% endif %}
-  </ul>
+  <section class='col-md-3'>
+    <a href="{% url 'hey_neighbor:detail' object.pk %}" for='choice{{forloop.counter}}'>{{object.tool}}</a>
+    {% if object.availability == True %}
+    <p> Is Available: Yes</p>
+    {% else %}
+    <p> Is Available: No</p>
+    {% endif %}
+  </section>
+
 {% endfor %}
 {% else %}
+</div>
 
 <p>There was an issue</p>
 

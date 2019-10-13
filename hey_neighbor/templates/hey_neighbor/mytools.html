@@ -2,18 +2,26 @@
 
 
 {% block content %}
+<div class='row justify-content-center'>
 <h2>My Tools</h2>
+</div>
+<div class='row'>
 {% if object_list %}
 {% for object in object_list %}
-  <ul>
-  <li><a>{{object.tool}}</a></li>
-  <li><a>{{object.availability}}</a></li>
+<section class='col-md-3'>
+  <p>{{object.tool}}</p>
+  {% if object.availability == True %}
+  <p> Is Available: Yes</p>
+  {% else %}
+  <p> Is Available: No</p>
+  {% endif %}
     {% if request.user.is_authenticated %}
     <a href="{% url 'hey_neighbor:edit_tool' object.pk %}">Edit Tool</a>
     <a href="{% url 'hey_neighbor:delete' object.pk %}">Delete Tool</a>
     {% endif %}
-  </ul>
+</section>
 {% endfor %}
+
 {% else %}
 
 <p>There was an issue</p>

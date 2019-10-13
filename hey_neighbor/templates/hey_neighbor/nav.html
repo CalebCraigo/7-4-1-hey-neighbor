@@ -1,4 +1,8 @@
 <header>
+  <div class='row justify-content-center'>
+    <h1 class='col-12-sm'>Welcome to Hey Neighbor</h1>
+  </div>
+  <div class='row justify-content-center'>
   <a href="{% url 'hey_neighbor:index' %}"><span>| Home |</span></a>
   <a href="{% url 'hey_neighbor:tool_new' %}"><span>| Share Your Tools |</span></a>
   <a href="{% url 'hey_neighbor:my_tool' %}"><span>| My Tools |</span></a>
@@ -8,6 +12,5 @@
   {% else %}
   <a href="{% url 'logout' %}"><span>| Log Out |</span></a>
   {% endif %}
-  <!-- <a href="{% url 'logout' %}"><span>| Log Out |</span></a> -->
-  <br></br>
+  </div>
 </header>

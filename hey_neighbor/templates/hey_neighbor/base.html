@@ -4,15 +4,16 @@
   <head>
     <meta charset="utf-8">
     <title>Hey Neighbor</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
   </head>
   <body>
-    <h1>Welcome to Hey Neighbor</h1>
+    <main class="container">
     {% include 'hey_neighbor/nav.html' %}
     <!-- {% if request.user.is_authenticated %}
     <p> Hello, {{tool.owner}}</p>
     {% endif %} -->
     {% block content %}
     {% endblock %}
-
+    </main>
   </body>
 </html>

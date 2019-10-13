@@ -1,18 +1,21 @@
 {% extends 'hey_neighbor/base.html' %}
 
 {% block content %}
+<div class='row justify-content-center'>
+  <h2>Your Neighbors</h2>
+</div>
 
 {% if neighbors_list %}
-<ul>
+<div class='row justify-content-center'>
   {% for owner in neighbors_list %}
-  <li>
+  <section class='col-md-1'>
   <!-- <a href='(url "hey_neighbor:neighbors_tool" owner.pk)'>{{ owner.username }}</a> -->
   <p>{{owner.username}}</p>
-  </li>
+  </section>
 {% endfor %}
 {% else %}
 
 <p>There was an issue</p>
-
+</div>
 {% endif %}
 {% endblock %}
