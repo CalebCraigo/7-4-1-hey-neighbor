@@ -8,6 +8,9 @@
   <body>
     <h1>Welcome to Hey Neighbor</h1>
     {% include 'hey_neighbor/nav.html' %}
+    <!-- {% if request.user.is_authenticated %}
+    <p> Hello, {{tool.owner}}</p>
+    {% endif %} -->
     {% block content %}
     {% endblock %}
 

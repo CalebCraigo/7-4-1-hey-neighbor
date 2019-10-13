@@ -2,6 +2,7 @@ from django.shortcuts import render, get_object_or_404, redirect
 from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 from django.contrib.auth.decorators import user_passes_test
 from django.http import HttpResponse, HttpResponseRedirect
+from django.contrib.auth.models import User
 from django.contrib.auth import logout
 from django.urls import reverse, reverse_lazy
 from django.views import generic
@@ -48,6 +49,13 @@ class CreateView(LoginRequiredMixin, generic.CreateView):
 
     success_url = reverse_lazy('hey_neighbor:my_tool')
 
+class NeighborView(generic.ListView):
+    model = User
+    template_name = 'hey_neighbor/neighbors.html'
+    context_object_name = 'neighbors_list'
+    def get_queryset(self):
+        return User.objects.exclude(username='admin')
+
 class MyToolView(LoginRequiredMixin, generic.ListView):
     model = Tool
     template_name = 'hey_neighbor/mytools.html'
@@ -55,7 +63,22 @@ class MyToolView(LoginRequiredMixin, generic.ListView):
     def get_queryset(self):
         return Tool.objects.filter(owner=self.request.user)
 
+class EditView(LoginRequiredMixin, generic.UpdateView):
+    model = Tool
+    fields = ['tool', 'types', 'availability']
+    template_name= 'hey_neighbor/edit.html'
 
+    success_url = reverse_lazy('hey_neighbor:my_tool')
+
+
+# def borrow(request, tool_id):
+#     tool = get_object_or_404(Tool, pk=tool_id)
+#     selected_choice = tool.choice_set.get(pk=tool_id)
+#
+#     selected_choice.availability = False
+#     selected_choice.save()
+#
+#     return HttpResponseRedirect(reverse('hey_neighbor:mytool', args=(tool.id,)))
 
 class DeleteView(LoginRequiredMixin, generic.DeleteView):
     model = Tool
@@ -64,9 +87,6 @@ class DeleteView(LoginRequiredMixin, generic.DeleteView):
         if not tool.owner == self.request.user:
 
             raise Http404
-
         return tool
-# def delete_view(request, pk):
-#     tool = get_object_or_404(Tool, pk=pk)
-#     tool.delete()
-#     return HttpResponseRedirect(reverse_lazy('hey_neighbor_index'))
+
+    success_url = reverse_lazy('hey_neighbor:my_tool')

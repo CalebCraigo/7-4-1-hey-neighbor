@@ -2,14 +2,15 @@
 
 
 {% block content %}
-
+<h2>My Tools</h2>
 {% if object_list %}
 {% for object in object_list %}
   <ul>
   <li><a>{{object.tool}}</a></li>
   <li><a>{{object.availability}}</a></li>
     {% if request.user.is_authenticated %}
-    <a href="{% url 'hey_neighbor:delete' object.pk %}">Delete Posting</a>
+    <a href="{% url 'hey_neighbor:edit_tool' object.pk %}">Edit Tool</a>
+    <a href="{% url 'hey_neighbor:delete' object.pk %}">Delete Tool</a>
     {% endif %}
   </ul>
 {% endfor %}

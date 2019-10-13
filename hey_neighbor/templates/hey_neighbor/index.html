@@ -2,6 +2,7 @@
 
 
 {% block content %}
+    <a href="{% url 'hey_neighbor:index' %}"><span>All Tools</span></a>
   {% for heading in object_list.headings %}
     <a href="{% url 'hey_neighbor:selection' heading %}"><span>{{heading.capitalize}}</span></a>
   {% endfor %}

@@ -1,0 +1,18 @@
+{% extends 'hey_neighbor/base.html' %}
+
+{% block content %}
+
+{% if neighbors_list %}
+<ul>
+  {% for owner in neighbors_list %}
+  <li>
+  <!-- <a href='(url "hey_neighbor:neighbors_tool" owner.pk)'>{{ owner.username }}</a> -->
+  <p>{{owner.username}}</p>
+  </li>
+{% endfor %}
+{% else %}
+
+<p>There was an issue</p>
+
+{% endif %}
+{% endblock %}
