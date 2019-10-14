@@ -130,3 +130,6 @@ STATICEFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
 LOGIN_REDIRECT_URL = '/hey_neighbor/'
 LOGOUT_REDIRECT_URL = 'hey_neighbor:index'
+
+MEDIA_URL = '/media/'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')

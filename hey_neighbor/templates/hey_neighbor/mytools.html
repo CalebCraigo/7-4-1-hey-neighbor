@@ -3,12 +3,12 @@
 
 {% block content %}
 <div class='row justify-content-center'>
-<h2>My Tools</h2>
+<h2 class='heads'>My Tools</h2>
 </div>
 <div class='row'>
 {% if object_list %}
 {% for object in object_list %}
-<section class='col-md-3'>
+<section class='posting col-md-3'>
   <p>{{object.tool}}</p>
   {% if object.availability == True %}
   <p> Is Available: Yes</p>

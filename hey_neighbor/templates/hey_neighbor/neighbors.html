@@ -2,16 +2,18 @@
 
 {% block content %}
 <div class='row justify-content-center'>
-  <h2>Your Neighbors</h2>
+  <h2 class='heads'>Your Neighbors</h2>
 </div>
 
 {% if neighbors_list %}
-<div class='row justify-content-center'>
+<div class='posting row justify-content-center'>
   {% for owner in neighbors_list %}
-  <section class='col-md-1'>
+
   <!-- <a href='(url "hey_neighbor:neighbors_tool" owner.pk)'>{{ owner.username }}</a> -->
-  <p>{{owner.username}}</p>
-  </section>
+  <ul>
+  <li> {{owner.username}}  </li>
+  </ul>
+
 {% endfor %}
 {% else %}
 

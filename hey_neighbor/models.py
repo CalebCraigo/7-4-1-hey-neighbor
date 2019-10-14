@@ -14,6 +14,7 @@ class Tool(models.Model):
     ('AUTO', 'Auto')
     ]
 
+    # image = models.ImageField(upload_to='images/')
     owner = models.ForeignKey(User, on_delete=models.CASCADE)
     tool = models.CharField(max_length=255, default='')
     types = models.CharField(max_length=255, choices=AVAILABLE_TYPES, default='YARD')

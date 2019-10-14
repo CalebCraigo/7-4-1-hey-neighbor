@@ -2,17 +2,21 @@
 
 
 {% block content %}
-<div class='row justify-content-center'>
+<div class='navs row justify-content-center'>
   <a href="{% url 'hey_neighbor:index' %}"><span class='col-sm-2'>All Tools </span></a>
 {% for heading in object_list.headings %}
   <a href="{% url 'hey_neighbor:selection' heading %}"><span class='col-sm-2'>{{heading.capitalize}} </span></a>
 {% endfor %}
 </div>
 
+<div class='row justify-content-center'>
+  <p> Welcome to Hey Neighbor! The app the allows you to easily lend and borrow your unused tools with your friends and neighbors!</p>
+</div>
 <div class='row'>
 {% if object_list %}
 {% for object in object_list.tools %}
-  <section class='col-md-3'>
+  <section class='posting col-md-2'>
+    <a href="{% url 'hey_neighbor:detail' object.pk %}" for='choice{{forloop.counter}}'><img src='{{object.image}}'></a>
     <a href="{% url 'hey_neighbor:detail' object.pk %}" for='choice{{forloop.counter}}'>{{object.tool}}</a>
     {% if object.availability == True %}
     <p> Is Available: Yes</p>
